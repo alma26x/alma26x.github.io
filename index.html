@@ -807,8 +807,8 @@
     <div class="project-grid">
 
         <div class="project-card">
-            <div class="project-image" style="background:#ffffff;">
-                <img src="images/emg_confusion_matrix.png" alt="Surface-EMG Gesture Decoding" style="object-fit:contain;" onerror="this.parentElement.innerHTML='EMG Gesture Decoding'">
+            <div class="project-image" style="background:#0d1117;">
+                <video src="videos/emg_realtime_demo.mp4" autoplay loop muted playsinline style="object-fit:contain;"></video>
             </div>
             <div class="project-body">
                 <div class="project-tools">
@@ -818,7 +818,8 @@
                     <span class="tool-tag" onclick="showTagInfo(event, this)">Machine Learning</span>
                 </div>
                 <div class="project-title">Surface-EMG Hand-Gesture Decoding</div>
-                <p class="project-desc">Built a machine-learning pipeline that decodes six hand gestures from 8-channel surface EMG (MYO armband) on a public 36-subject dataset (Lobov et al., 2018). The signal is windowed, classic time-domain features are extracted (MAV, RMS, waveform length, zero crossings, slope-sign changes), and a Random Forest is trained under an honest cross-session protocol: train on session 1, test on session 2. It reaches 86.7% mean within-subject accuracy across 35 subjects against 16.7% chance, with errors falling between anatomically adjacent movements. Code: <a href="https://github.com/alma26x/emg-gesture-decoding" target="_blank" style="color:#00274C; text-decoration:underline;">github.com/alma26x/emg-gesture-decoding</a>.</p>
+                <p class="project-desc">Built a machine-learning pipeline that decodes six hand gestures from 8-channel surface EMG (MYO armband) on a public 36-subject dataset (Lobov et al., 2018). Time-domain features (MAV, RMS, waveform length, zero crossings, slope-sign changes) feed a Random Forest, evaluated the way a myoelectric-control study should be: 86.7% mean within-subject accuracy under an honest cross-session protocol, and 75.4% on held-out subjects the model never saw, against 16.7% chance. The clip above is the trained decoder running in real time on the held-out session, tracking each gesture window by window. Full evaluation (classifier comparison, latency-accuracy tradeoff, temporal smoothing) and code: <a href="https://github.com/alma26x/emg-gesture-decoding" target="_blank" style="color:#00274C; text-decoration:underline;">github.com/alma26x/emg-gesture-decoding</a>.</p>
+                <img src="images/emg_results_panel.png" alt="EMG decoding evaluation: classifier comparison, cross-subject generalization, latency-accuracy tradeoff, temporal smoothing" onclick="openLightbox(this.src, this.alt)" style="width:100%; border-radius:8px; margin-top:14px; cursor:zoom-in;">
                 <div style="position:relative; display:inline-block; margin-top:16px;">
                     <button class="assist-btn" onclick="toggleAssist(this)">AI Assisted Learning</button>
                     <div class="assist-tooltip">I'm using AI to help me build and learn this project; it is not entirely independent work yet. I'm actively working to understand the full pipeline so I can reproduce and extend it on my own.</div>
@@ -953,25 +954,33 @@
         </div>
 
         <div class="project-card">
-            <div class="project-image" style="background:#edf0f5; display:flex; align-items:center; justify-content:center;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 64 80" fill="none">
-                    <rect x="22" y="2" width="20" height="32" rx="10" fill="#00274C" opacity="0.12"/>
-                    <rect x="26" y="2" width="12" height="32" rx="6" fill="#00274C" opacity="0.2"/>
-                    <rect x="10" y="30" width="44" height="10" rx="5" fill="#00274C" opacity="0.18"/>
-                    <rect x="14" y="38" width="8" height="28" rx="4" fill="#00274C" opacity="0.15"/>
-                    <rect x="24" y="38" width="8" height="34" rx="4" fill="#00274C" opacity="0.15"/>
-                    <rect x="34" y="38" width="8" height="30" rx="4" fill="#00274C" opacity="0.15"/>
-                    <rect x="44" y="38" width="8" height="24" rx="4" fill="#00274C" opacity="0.15"/>
-                </svg>
+            <div class="project-image">
+                <img src="images/flagship_arm_hero.png" alt="HD-EMG Myoelectric Prosthetic Arm" onerror="this.parentElement.innerHTML='HD-EMG Bionic Arm'">
             </div>
             <div class="project-body">
                 <div class="project-tools">
                     <span class="tool-tag" onclick="showTagInfo(event, this)">Blender</span>
-                    <span class="tool-tag" onclick="showTagInfo(event, this)">3D Slicer</span>
-                    <span class="tool-tag" onclick="showTagInfo(event, this)">Research</span>
+                    <span class="tool-tag" onclick="showTagInfo(event, this)">Hard-Surface Modeling</span>
+                    <span class="tool-tag" onclick="showTagInfo(event, this)">sEMG</span>
                 </div>
-                <div class="project-title">Prosthetics Research & Design</div>
-                <p class="project-desc">Independent exploration of prosthetic limb design, using 3D modeling to prototype anatomically informed components. Looked at how imaging data can guide custom prosthetic geometry and how additive manufacturing could lower the cost of accessible devices. Connects 7 years of 3D modeling experience to a biomedical application.</p>
+                <div class="project-title">HD-EMG Bionic Arm</div>
+                <p class="project-desc">A concept render of a myoelectric prosthetic forearm: a high-density surface-EMG electrode band wraps the socket, reading the muscle signals that drive the articulated bionic hand. Modeled, textured, and lit in Blender (Cycles) with a studio rig and a filmic grade. It visualizes the end-to-end idea behind my sEMG decoding flagship: muscle intent in, dexterous robotic motion out.</p>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-image">
+                <img src="images/prosthetic_finger_fusion.png" alt="Prosthetic Finger CAD" onerror="this.parentElement.innerHTML='Prosthetic Finger CAD (Fusion 360)'">
+            </div>
+            <div class="project-body">
+                <div class="project-tools">
+                    <span class="tool-tag" onclick="showTagInfo(event, this)">Autodesk Fusion</span>
+                    <span class="tool-tag" onclick="showTagInfo(event, this)">Parametric CAD</span>
+                    <span class="tool-tag" onclick="showTagInfo(event, this)">Mechanical Design</span>
+                    <span class="tool-tag" onclick="showTagInfo(event, this)">Prosthetics</span>
+                </div>
+                <div class="project-title">Prosthetic Finger CAD <span style="color:#C49B00; font-weight:700; font-size:0.65rem; letter-spacing:0.14em; margin-left:8px; text-transform:uppercase;">WIP</span></div>
+                <p class="project-desc">Learning Autodesk Fusion to design the mechanical end-effector for the HD-EMG flagship. Current state: a parametric proximal phalanx with a built-in condyle head (the rounded knuckle that lets the next segment roll without jamming), a three-segment articulated finger chain, and revolute joints constrained to physiological ranges (0–80° at the MCP, 0–90° at the PIP). Built file-by-file so the same phalanx geometry can be referenced across multiple fingers from a single source. Next: tendon channel routing, motor mounts, and integrating the finger with the sEMG control pipeline so the decoder I'm developing can actually drive a hand. Inspired by COVVI and Open Bionics; aesthetic notes from Deus Ex and Cyberpunk 2077.</p>
             </div>
         </div>
 
@@ -1877,6 +1886,46 @@ body.dark .achievement-desc { color: #6e7681; }
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.35; transform: scale(0.8); }
 }
+
+/* ===================== RESPONSIVE / MOBILE ===================== */
+@media (max-width: 860px) {
+    html, body { overflow-x: hidden; }
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }              /* 7 centered links don't fit; page is a single scroll */
+    .hero { padding: 92px 24px 56px; min-height: auto; }
+    .hero-content { max-width: 100%; }
+    section { padding: 64px 24px; }
+    .project-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 20px; }
+    .section-layout { flex-direction: column; align-items: stretch; }
+    .expand-btn { margin: 20px auto 0; }
+}
+
+@media (max-width: 520px) {
+    nav { padding: 0 14px; }
+    .nav-logo { font-size: 1rem; }
+    .nav-left { gap: 8px; }
+    .about-nav-btn { padding: 5px 11px; font-size: 0.72rem; }
+    .contact-nav-btn { padding: 7px 14px; font-size: 0.78rem; }
+
+    .hero { padding: 84px 18px 44px; }
+    .hero h1 { font-size: 2.6rem; }
+    .hero p { font-size: 0.95rem; max-width: 100%; margin-bottom: 28px; }
+    .hero-stats { gap: 22px; flex-wrap: wrap; }
+    .stat-number { font-size: 1.6rem; }
+
+    section { padding: 52px 18px; }
+    .section-title { font-size: 1.65rem; }
+    .project-grid { grid-template-columns: 1fr; gap: 18px; }
+    .project-body { padding: 20px 20px 22px; }
+    .carousel, .project-image { height: 200px; }
+
+    .about-modal-box, .desc-modal-box, .exp-modal-box, .modal-box {
+        padding: 28px 22px; max-height: 90vh; border-radius: 12px;
+    }
+    .about-modal-name { font-size: 1.5rem; }
+    #lightbox-img, #lightbox-video { max-width: 94vw; max-height: 88vh; }
+    #tag-popup { max-width: 88vw; }
+}
 </style>
 
 <script>
@@ -2044,6 +2093,11 @@ const tagDescriptions = {
     'Structural Biology': 'The study of the molecular shape and architecture of biological macromolecules like proteins, and how that structure determines their function.',
     'Neuroscience': 'The scientific study of the nervous system, spanning the molecular, cellular, and systems-level mechanisms behind brain function and behavior.',
     'Volume Conduction': 'The physical spread of electrical signals through biological tissue before they reach recording electrodes, which blurs and mixes signals from distinct sources by the time they are measured at the skin.',
+    'Autodesk Fusion': 'A professional cloud-based CAD/CAM tool used for parametric 3D modeling, mechanical assembly design, and engineering simulation.',
+    'Parametric CAD': 'A modeling approach where geometry is defined by editable parameters and constraints, so changing one dimension automatically propagates through the entire design.',
+    'Mechanical Design': 'The engineering discipline of designing physical mechanisms, joints, linkages, and structural components to achieve a desired motion or function.',
+    '3D Printing': 'Additive manufacturing — building physical objects layer by layer from a digital model, enabling rapid prototyping of custom geometries.',
+    'Biomechanics': 'The study of the mechanical principles governing biological movement, applied here to design joint geometries and range-of-motion constraints that match human finger anatomy.',
     'AlphaFold': 'An AI system developed by DeepMind that predicts the 3D structure of a protein from its amino acid sequence.',
     'RFdiffusion': 'A generative AI model that designs novel protein structures by iteratively refining noise into functional protein backbones.',
     'OpenAI API (GPT-4o)': "A programming interface that lets applications access OpenAI's GPT-4o model for tasks like text generation and Q&A.",
@@ -2511,6 +2565,25 @@ window.onload = () => {
     <div class="project-grid">
 
         <div class="project-card">
+            <div class="project-image">
+                <img src="images/prosthetic_finger_wip.png" alt="Prosthetic Finger WIP in Autodesk Fusion">
+            </div>
+            <div class="project-body">
+                <div class="building-status">In Progress</div>
+                <div class="project-tools">
+                    <span class="tool-tag" onclick="showTagInfo(event, this)">Autodesk Fusion</span>
+                    <span class="tool-tag" onclick="showTagInfo(event, this)">Parametric CAD</span>
+                    <span class="tool-tag" onclick="showTagInfo(event, this)">Mechanical Design</span>
+                    <span class="tool-tag" onclick="showTagInfo(event, this)">3D Printing</span>
+                    <span class="tool-tag" onclick="showTagInfo(event, this)">Biomechanics</span>
+                </div>
+                <div class="project-title">Prosthetic Hand &mdash; Parametric Finger Design</div>
+                <p class="project-desc">Designing the mechanical end-effector for the HD-EMG flagship in Autodesk Fusion. Current state: a parametric proximal phalanx with a built-in condyle head — the rounded knuckle geometry that lets the next segment roll without jamming — a three-segment articulated finger chain, and revolute joints constrained to physiological ranges (0–80° at the MCP, 0–90° at the PIP).</p>
+                <p class="project-desc">Built file-by-file so the same phalanx geometry can be referenced across all five fingers from a single source component. Next: tendon channel routing, motor mounts, and integrating the finger assembly with the sEMG control pipeline so the decoder can actually drive the hand. Inspired by COVVI and Open Bionics; aesthetic notes from Deus Ex and Cyberpunk 2077.</p>
+            </div>
+        </div>
+
+        <div class="project-card">
             <div class="project-image" style="background:#edf2ee; display:flex; align-items:center; justify-content:center;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
                     <rect x="20" y="8" width="24" height="14" rx="4" fill="#00274C" opacity="0.15"/>
@@ -2559,6 +2632,10 @@ window.onload = () => {
                 </div>
                 <div class="project-title">Hodgkin-Huxley Neural Circuit Modeling</div>
                 <p class="project-desc">Implemented the Hodgkin-Huxley neuron model from scratch in Python, simulating the full biophysical dynamics of action potential generation using four coupled differential equations governing membrane voltage and sodium and potassium ion channel gating variables. Characterized the neuron's input-output relationship through an f-I curve, revealing nonlinear firing rate bifurcations across a range of stimulus intensities. Extended the model to a two-neuron system with biologically realistic synaptic transmission, demonstrating both excitatory and inhibitory coupling. Finally, constructed a three-neuron Winner-Take-All network in which lateral inhibition between competing neurons produces a single dominant firing unit, a fundamental mechanism underlying attention and decision-making in the brain. All simulations used forward Euler numerical integration with a 0.01 ms time step.</p>
+                <div style="position:relative; display:inline-block; margin-top:16px;">
+                    <button class="assist-btn" onclick="toggleAssist(this)">AI Assisted Learning</button>
+                    <div class="assist-tooltip">I'm using AI to help me build and learn this project; it is not entirely independent work yet. I'm actively working to understand the full pipeline so I can reproduce and extend it on my own.</div>
+                </div>
             </div>
         </div>
 
