@@ -883,6 +883,19 @@
                 <div class="project-title">Modeling the Surface-EMG Forward Problem</div>
                 <p class="project-desc">A first-principles model of how a muscle's electrical signal travels out to skin sensors (the surface-EMG forward problem). I segmented a forearm into its four tissues (muscle, bone, fat, skin) from public Visible Human cross-sections in 3D Slicer, rendered it in Blender, then wrote a Python simulation of a motor-unit action potential being generated and spreading through the tissue to a grid of skin sensors, using the standard Rosenfalck source and the Farina &amp; Merletti volume-conductor model. The simulation reproduces the two effects that make EMG hard to read: deeper signals reach the skin weaker and more blurred, and signals from neighboring muscles overlap (crosstalk). A conceptual reproduction of published methods, built to understand the signal path before trying to decode it. <a href="writing/emg_forward_model_summary.pdf" target="_blank" style="color:#00274C; text-decoration:underline;">One-page summary (PDF)</a>.</p>
                 <img src="images/forward_model_overview.png" alt="Project overview: 3D tissue model, imaging segmentation, and the simulated forward problem showing depth blurring and crosstalk" onclick="openLightbox(this.src, this.alt)" style="width:100%; border-radius:8px; margin-top:14px; cursor:zoom-in;">
+                <div style="margin-top:18px; padding:14px 16px; background:#f5f6f8; border-radius:8px;">
+                    <div style="font-weight:600; color:#00274C; margin-bottom:8px;">How I built it, step by step</div>
+                    <ol style="margin:0; padding-left:20px; line-height:1.7;">
+                        <li>Downloaded real forearm cross-sections from the public Visible Human Project (actual cadaver body scans).</li>
+                        <li>Rebuilt them into a 3D volume in 3D Slicer and set the real-world scale.</li>
+                        <li>Cropped a single forearm block out of the full-body slices.</li>
+                        <li>Hand-labeled the four tissues: muscle, bone, fat, and skin.</li>
+                        <li>Exported each tissue as a 3D mesh and rendered the model in Blender with realistic tissue materials.</li>
+                        <li>Wrote the physics in Python: a Rosenfalck motor-unit signal propagated through the tissue layers to a grid of skin sensors (the Farina &amp; Merletti volume conductor).</li>
+                        <li>Generated the result figures showing depth blurring and crosstalk.</li>
+                    </ol>
+                    <div style="margin-top:10px;"><a href="writing/emg_forward_model_methods.pdf" target="_blank" style="color:#00274C; text-decoration:underline;">Full step-by-step guide (PDF)</a></div>
+                </div>
                 <div style="position:relative; display:inline-block; margin-top:16px;">
                     <button class="assist-btn" onclick="toggleAssist(this)">AI Assisted Learning</button>
                     <div class="assist-tooltip">I'm using AI as a tutor on this project: it explains each concept as we go, walks me through the math and code, and I work through the pipeline alongside it rather than copying it. The goal is to understand every step well enough to reproduce, defend, and extend it on my own.</div>
