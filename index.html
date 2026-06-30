@@ -374,6 +374,58 @@
             padding: 24px;
         }
         #about-modal.open { display: flex; }
+        #welcome-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,21,47,0.58);
+            z-index: 5000;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        #welcome-modal.open { display: flex; }
+        .welcome-modal-box {
+            background: #faf8f3;
+            border-radius: 14px;
+            padding: 40px 44px;
+            max-width: 480px;
+            width: 100%;
+            max-height: 86vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 28px 72px rgba(0,21,47,0.25);
+            border-top: 3px solid #A31F34;
+        }
+        .welcome-modal-tag {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #A31F34;
+            margin-bottom: 14px;
+        }
+        .welcome-modal-text {
+            font-size: 0.9rem;
+            color: #3d3328;
+            line-height: 1.8;
+            margin-bottom: 22px;
+        }
+        .welcome-modal-email {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #A31F34;
+            text-decoration: none;
+            border-bottom: 1px solid #A31F34;
+            padding-bottom: 1px;
+        }
+        .welcome-modal-email:hover { color: #580C0C; border-color: #580C0C; }
+        body.dark .welcome-modal-box { background: #1A1A1C; border-top-color: #E8384F; }
+        body.dark .welcome-modal-tag { color: #F07070; }
+        body.dark .welcome-modal-text { color: #c9d1d9; }
+        body.dark .welcome-modal-email { color: #F07070; border-color: #F07070; }
+        body.dark .welcome-modal-email:hover { color: #fff; border-color: #fff; }
         .about-modal-box {
             background: #faf8f3;
             border-radius: 14px;
@@ -2445,12 +2497,23 @@ function closeAboutModal() {
     document.body.style.overflow = '';
 }
 
+function openWelcomeModal() {
+    document.getElementById('welcome-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeWelcomeModal() {
+    document.getElementById('welcome-modal').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
 window.onload = () => {
     if (localStorage.getItem('darkMode') !== '0') {
         document.body.classList.add('dark');
         document.getElementById('dark-mode-toggle').checked = true;
         document.getElementById('hero-dark-btn').textContent = 'Light Mode';
     }
+    openWelcomeModal();
     initCarousel('protein-carousel');
     initCarousel('hh-carousel');
     initCarousel('yoe1-carousel');
@@ -2798,6 +2861,15 @@ window.onload = () => {
 </div>
 
 <!-- ABOUT MODAL -->
+<div id="welcome-modal" onclick="closeWelcomeModal()">
+    <div class="welcome-modal-box" onclick="event.stopPropagation()">
+        <button class="desc-modal-close" onclick="closeWelcomeModal()">&#215;</button>
+        <div class="welcome-modal-tag">A Quick Note</div>
+        <p class="welcome-modal-text">For any professors, companies, and students who happen to click on my portfolio: I'd appreciate any feedback, criticism, or invitations to speak about my projects. I'm more than happy to discuss anything on this site, whether that's a deep dive into a project, a question, or just a conversation.</p>
+        <a href="mailto:santiago.benavidesmrtz@outlook.com" class="welcome-modal-email">santiago.benavidesmrtz@outlook.com</a>
+    </div>
+</div>
+
 <div id="about-modal" onclick="closeAboutModal()">
     <div class="about-modal-box" onclick="event.stopPropagation()">
         <button class="desc-modal-close" onclick="closeAboutModal()">&#215;</button>
