@@ -845,6 +845,12 @@
                         <span class="toggle-slider"></span>
                     </label>
                 </div>
+                <div class="settings-row" style="margin-top:14px;">
+                    <span class="settings-row-label">Color Scheme</span>
+                    <select class="color-scheme-select" id="color-scheme-select">
+                        <option value="mit-stanford" selected>MIT/Stanford</option>
+                    </select>
+                </div>
             </div>
         </div>
     </div>
@@ -1461,6 +1467,18 @@
     gap: 16px;
 }
 .settings-row-label { font-size: 0.875rem; font-weight: 600; color: #0f172a; }
+.color-scheme-select {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #A31F34;
+    background: #fdf2f3;
+    border: 1px solid #8A8B8C;
+    border-radius: 6px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+body.dark .color-scheme-select { background: #2A2A2D; color: #F07070; border-color: #2E2E32; }
 
 /* TOGGLE SWITCH */
 .toggle-switch { position: relative; display: inline-block; width: 40px; height: 22px; flex-shrink: 0; }
@@ -2235,6 +2253,12 @@ const tagDescriptions = {
     'Electrode Interfaces': 'The physical contacts between an electronic device and biological tissue, used to record or stimulate electrical signals.',
     'Analog Front-End': 'The circuitry that conditions, amplifies, and filters raw analog signals before they are digitized for processing.',
     'DSP': 'Digital Signal Processing, algorithms used to analyze, filter, and transform digital signals such as EMG or sensor data.',
+    'Fourier Series': 'A way of representing a periodic signal as a sum of simple sine and cosine waves of different frequencies, the foundation for analyzing repeating signals like muscle and neural activity.',
+    'Fourier Transform': 'A mathematical tool that converts a signal from the time domain into the frequency domain, revealing which frequencies make it up. Essential for filtering and interpreting EMG and other biosignals.',
+    'Linear Algebra': 'The branch of mathematics dealing with vectors, matrices, and linear transformations, used throughout signal processing, machine learning, and neural decoding algorithms.',
+    'MIT OpenCourseWare': "MIT's free, open publication of its course materials, including lecture videos, notes, and problem sets from actual MIT classes.",
+    'Anatomy & Physiology': 'The study of the structure (anatomy) and function (physiology) of the human body and its organ systems.',
+    'Science Olympiad': 'A national STEM competition where students compete in events spanning biology, chemistry, physics, and engineering, including building devices and mastering in-depth science content.',
     'Motor Unit Decomposition': 'A signal processing technique that separates a recorded muscle signal into the activity of individual motor units, the smallest functional units of muscle contraction.',
     'Ninapro': 'Non-Invasive Adaptive Prosthetics, a public dataset of surface EMG recordings used to train and benchmark hand gesture recognition algorithms.',
     'NumPy': 'A fundamental Python library for numerical computing, providing support for large arrays, matrices, and mathematical functions.',
@@ -2642,6 +2666,45 @@ window.onload = () => {
                 <div class="exp-detail">Actively building expertise in BioPython for biological sequence analysis, genomic data parsing, and computational biology workflows. Developing proficiency in sequence alignment, FASTA/GenBank file handling, and programmatic access to NCBI databases, extending Python capabilities into the molecular and genomic domains of biomedical research.</div>
             </div>
         </div>
+        <div class="exp-entry">
+            <div class="exp-badge">&fnof;(x)</div>
+            <div>
+                <div class="exp-role">Fourier Series, Fourier Transforms & Neuroscience Mathematics</div>
+                <div class="exp-meta">Self-Directed &middot; In Progress</div>
+                <div class="exp-detail">Studying the mathematics that underlie signal processing in neuroscience and biomedical engineering, starting from Fourier series decomposition of periodic signals and extending to the continuous and discrete Fourier transform. Building the math foundation needed to move EMG and neural signals between the time and frequency domains, a prerequisite for the filtering, spectral analysis, and motor-unit decomposition work behind the HD-EMG decoding flagship.</div>
+                <div class="exp-skill-tags">
+                    <span class="tool-tag" onclick="showTagInfo(event, this)">Fourier Series</span>
+                    <span class="tool-tag" onclick="showTagInfo(event, this)">Fourier Transform</span>
+                    <span class="tool-tag" onclick="showTagInfo(event, this)">Linear Algebra</span>
+                    <span class="tool-tag" onclick="showTagInfo(event, this)">Signal Processing</span>
+                    <span class="tool-tag" onclick="showTagInfo(event, this)">DSP</span>
+                </div>
+            </div>
+        </div>
+        <div class="exp-entry">
+            <div class="exp-badge" style="font-size:0.62rem;">MIT<br>OCW</div>
+            <div>
+                <div class="exp-role">Linear Algebra (18.06)</div>
+                <div class="exp-meta">MIT OpenCourseWare &middot; Prof. Gilbert Strang &middot; In Progress</div>
+                <div class="exp-detail">Working through MIT's canonical linear algebra course: vector spaces, eigenvalues and eigenvectors, matrix decompositions, and the geometry behind linear transformations. Directly supports the math used in Fourier analysis, motor-unit decomposition, and the decoding algorithms behind the HD-EMG flagship.</div>
+                <div class="exp-skill-tags">
+                    <span class="tool-tag" onclick="showTagInfo(event, this)">Linear Algebra</span>
+                    <span class="tool-tag" onclick="showTagInfo(event, this)">MIT OpenCourseWare</span>
+                </div>
+            </div>
+        </div>
+        <div class="exp-entry">
+            <div class="exp-badge" style="font-size:0.62rem;">A&amp;P</div>
+            <div>
+                <div class="exp-role">Anatomy & Physiology, Science Olympiad</div>
+                <div class="exp-meta">Self-Directed &middot; Competition Prep &middot; Ongoing</div>
+                <div class="exp-detail">Preparing for the Science Olympiad Anatomy & Physiology event by studying human organ systems in depth, currently the respiratory, digestive, and immune systems, drawing on Marieb's Human Anatomy & Physiology, Fox's Human Physiology, OpenStax Anatomy & Physiology, and Vander's Human Physiology. Building toward state and national competition while reinforcing the physiological foundation behind the neuromuscular and biomedical engineering work elsewhere on this site.</div>
+                <div class="exp-skill-tags">
+                    <span class="tool-tag" onclick="showTagInfo(event, this)">Anatomy & Physiology</span>
+                    <span class="tool-tag" onclick="showTagInfo(event, this)">Science Olympiad</span>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -2865,7 +2928,7 @@ window.onload = () => {
     <div class="welcome-modal-box" onclick="event.stopPropagation()">
         <button class="desc-modal-close" onclick="closeWelcomeModal()">&#215;</button>
         <div class="welcome-modal-tag">A Quick Note</div>
-        <p class="welcome-modal-text">For any professors, companies, and students who happen to click on my portfolio: I'd appreciate any feedback, criticism, or invitations to speak about my projects. I'm more than happy to discuss anything on this site, whether that's a deep dive into a project, a question, or just a conversation.</p>
+        <p class="welcome-modal-text">For any professors, companies, and undergraduate/graduate students who happen to click on my portfolio: I'd appreciate any feedback, criticism, or invitations to speak about my projects. I'm more than happy to discuss anything on this site, whether that's a deep dive into a project, a question, or just a conversation.</p>
         <a href="mailto:santiago.benavidesmrtz@outlook.com" class="welcome-modal-email">santiago.benavidesmrtz@outlook.com</a>
     </div>
 </div>
