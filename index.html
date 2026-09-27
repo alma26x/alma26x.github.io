@@ -891,6 +891,22 @@
     <div class="project-grid">
 
         <div class="project-card">
+            <div class="project-image" style="background:#1b1d22;">
+                <img src="images/ventricle_shape_render.jpg" alt="3D lateral ventricles reconstructed from MRI inside a transparent brain outline, superior view with orientation labels and a 20 mm scale bar" onclick="openLightbox(this.src, this.alt)" style="width:100%; height:100%; object-fit:contain; cursor:zoom-in;">
+            </div>
+            <div class="project-body">
+                <div class="project-tools">
+                    <span class="tool-tag" onclick="showTagInfo(event, this)">3D Slicer</span>
+                    <span class="tool-tag" onclick="showTagInfo(event, this)">Blender</span>
+                    <span class="tool-tag" onclick="showTagInfo(event, this)">Python</span>
+                    <span class="tool-tag" onclick="showTagInfo(event, this)">Structural MRI</span>
+                </div>
+                <div class="project-title">Ventricle Shape in Schizophrenia (In Progress)</div>
+                <p class="project-desc">Enlarged lateral ventricles are one of the most replicated brain findings in schizophrenia, but they are almost always measured as a single volume, and patients and controls overlap heavily. This project asks whether ventricle <i>shape</i> separates people with schizophrenia from healthy controls better than ventricle <i>size</i>, using public MRI data from 50 patients and 125 controls (OpenNeuro ds000030). Each person's ventricles are rebuilt as a 3D surface from FreeSurfer labels, aligned to remove position, rotation, and size, and compared to a control template with surface distance maps; size, shape, and both are then compared with cross-validated classifiers, adjusting for age, sex, head size, and scanner. Shown above: the first reconstruction, from one healthy control. The small holes at the front of the left ventricle mark regions only about one voxel thick, a resolution limit the analysis has to handle. Results in progress for the Science and Engineering Fair of Houston 2027. <a href="writing/ventricle_shape_analysis_plan.pdf" target="_blank" style="color:#A31F34; text-decoration:underline;">One-page analysis plan (PDF)</a>.</p>
+            </div>
+        </div>
+
+        <div class="project-card">
             <div class="project-image" style="background:#141416;">
                 <video src="videos/emg_realtime_demo.mp4" autoplay loop muted playsinline style="object-fit:contain;"></video>
             </div>
